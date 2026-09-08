@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tecnologías</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, rgb(1, 5, 39) 0%, rgb(8, 16, 80) 35%, rgb(1, 34, 104) 65%, rgb(10, 40, 120) 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 40px 20px;
+            font-family: "Space Grotesk", Verdana, sans-serif;
+        }
+
+        .TituloprincipalTecnologías {
+            text-align: center;
+            font-size: 32px;
+            color: #ffffff;
+            padding: 20px 0 30px;
+            margin: 0;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+
+        .GrupoTecnologias {
+            max-width: 1400px;
+            margin: 0 auto 40px;
+        }
+
+        .TituloGrupo {
+            text-align: center;
+            font-size: 24px;
+            color: #72d8ff;
+            padding: 10px 0 20px;
+            margin: 0;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            border-bottom: 2px solid rgba(114, 216, 255, 0.2);
+        }
+
+        .GridTecnologias {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .TarjetaTecnologia {
+            background-color: rgb(1, 34, 104);
+            text-align: center;
+            border-radius: 10px;
+            padding: 18px 12px;
+            color: rgb(239, 243, 247);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .TarjetaTecnologia:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            border-color: rgba(10, 127, 229, 0.45);
+        }
+
+        .TarjetaTecnologia h1 {
+            font-size: 15px;
+            margin: 6px 0 0;
+            font-weight: 600;
+        }
+
+        .ImágenTecnologias {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            margin: 0 auto;
+        }
+
+        .ContenedorBotonTecnologias {
+            text-align: center;
+            padding: 30px 0 10px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .BotonTecnologias {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            padding: 16px 38px;
+            background: linear-gradient(135deg, rgba(1, 34, 104, 0.9), rgba(10, 127, 229, 0.4));
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 50px;
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(8px);
+        }
+
+        .BotonTecnologias::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, #0a7fe5, #7c3aed);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            border-radius: 50px;
+        }
+
+        .BotonTecnologias:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 14px 40px rgba(10, 127, 229, 0.35);
+            border-color: rgba(10, 127, 229, 0.4);
+        }
+
+        .BotonTecnologias:hover::before {
+            opacity: 1;
+        }
+
+        .BotonTecnologias:hover .BotonTecnologiasIcono {
+            transform: translateX(8px);
+        }
+
+        .BotonTecnologiasTexto {
+            position: relative;
+            z-index: 1;
+        }
+
+        .BotonTecnologiasIcono {
+            position: relative;
+            z-index: 1;
+            display: inline-flex;
+            align-items: center;
+            font-size: 18px;
+            transition: transform 0.3s ease;
+        }
+
+        .BotonTecnologias:active {
+            transform: scale(0.96);
+        }
+
+        @media (max-width: 700px) {
+            .TituloprincipalTecnologías {
+                font-size: 24px;
+                padding: 10px 0 20px;
+            }
+
+            .TituloGrupo {
+                font-size: 20px;
+            }
+
+            .GridTecnologias {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 12px;
+            }
+
+            .TarjetaTecnologia {
+                padding: 12px 8px;
+            }
+
+            .ImágenTecnologias {
+                width: 45px;
+                height: 45px;
+            }
+
+            .TarjetaTecnologia h1 {
+                font-size: 12px;
+            }
+
+            .BotonTecnologias {
+                padding: 14px 24px;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .GridTecnologias {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+
+            .TarjetaTecnologia {
+                padding: 10px 6px;
+            }
+
+            .ImágenTecnologias {
+                width: 40px;
+                height: 40px;
+            }
+
+            .TarjetaTecnologia h1 {
+                font-size: 11px;
+            }
+
+            .BotonTecnologias {
+                padding: 12px 18px;
+                font-size: 13px;
+                gap: 10px;
+            }
+
+            .BotonTecnologiasIcono {
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<h1 class="TituloprincipalTecnologías">Tecnologias y Herramientas</h1>
+
+<!-- GRUPO 1: LENGUAJES Y DESARROLLO WEB -->
+<div class="GrupoTecnologias">
+    <h2 class="TituloGrupo">Lenguajes y Desarrollo Web</h2>
+    <div class="GridTecnologias">
+        <div class="TarjetaTecnologia">
+            <img class="ImágenTecnologias" src="IMAGENES/HTML Logo.png" alt="Logo de HTML" loading="lazy" decoding="async">
+            <h1>HTML5</h1>
+        </div>
+        <div class="TarjetaTecnologia">
+            <img class="ImágenTecnologias" src="IMAGENES/Css Logo.webp" alt="Logo de CSS" loading="lazy" decoding="async">
+            <h1>CSS3</h1>
+        </div>
+        <div class="TarjetaTecnologia">
+            <img class="ImágenTecnologias" src="IMAGENES/Javascript Logo.png" alt="Logo de JavaScript" loading="lazy" decoding="async">
+            <h1>JavaScript</h1>
+        </div>
+        <div class="TarjetaTecnologia">
+            <img class="ImágenTecnologias" src="IMAGENES/Logo GitHub.png" alt="Logo de GitHub" loading="lazy" decoding="async">
+            <h1>GitHub</h1>
+        </div>
+        <div class="TarjetaTecnologia">
+            <img class="ImágenTecnologias" src="IMAGENES/Vs-Code Logo.webp" alt="Logo de Vs-Code" loading="lazy" decoding="async">
+            <h1>Vs-Code</h1>
+        </div>
+    </div>
+</div>
+
+<!-- GRUPO 2: SISTEMAS OPERATIVOS Y ADMINISTRACIÓN -->
+<div class="GrupoTecnologias">
+    <h2 class="TituloGrupo"> Sistemas Operativos y Administración</h2>
+    <div class="GridTecnologias">
+        <div class="TarjetaTecnologia">
+            <img class="ImágenTecnologias" src="IMAGENES/Windows Logo.webp" alt="Logo de Windows" loading="lazy" decoding="async">
+            <h1>Windows</h1>
+        </div>
+        <div class="TarjetaTecnologia">
+            <img class="ImágenTecnologias" src="IMAGENES/Linux Logo.webp" alt="Logo de Linux" loading="lazy" decoding="async">
+            <h1>Linux</h1>
+        </div>
+        <div class="TarjetaTecnologia">
+            <img class="ImágenTecnologias" src="IMAGENES/Powershell Logo.webp" alt="Logo de PowerShell" loading="lazy" decoding="async">
+            <h1>PowerShell</h1>
+        </div>
+        <div class="TarjetaTecnologia">
+            <img class="ImágenTecnologias" src="IMAGENES/Bash Logo.webp" alt="Logo de Bash" loading="lazy" decoding="async">
+            <h1>Bash</h1>
+        </div>
+    </div>
+</div>
+
+<!-- GRUPO 3: REDES Y SERVIDORES -->
+<div class="GrupoTecnologias">
+    <h2 class="TituloGrupo">Redes y Servidores</h2>
+    <div class="GridTecnologias">
+        <div class="TarjetaTecnologia">
+            <img class="ImágenTecnologias" src="IMAGENES/Cisco Logo.webp" alt="Logo de Cisco" loading="lazy" decoding="async">
+            <h1>Cisco</h1>
+        </div>
+        <div class="TarjetaTecnologia">
+            <img class="ImágenTecnologias" src="IMAGENES/Logo Apache.webp" alt="Logo de Apache" loading="lazy" decoding="async">
+            <h1>Apache</h1>
+        </div>
+        <div class="TarjetaTecnologia">
+            <img class="ImágenTecnologias" src="IMAGENES/Nginx Logo.webp" alt="Logo de Nginx" loading="lazy" decoding="async">
+            <h1>Nginx</h1>
+        </div>
+        <div class="TarjetaTecnologia">
+            <img class="ImágenTecnologias" src="IMAGENES/Pi-Hole Logo.webp" alt="Logo de Pi-Hole" loading="lazy" decoding="async">
+            <h1>Pi-Hole</h1>
+        </div>
+        <div class="TarjetaTecnologia">
+            <img class="ImágenTecnologias" src="IMAGENES/Cableado Logo.webp" alt="Logo de Cableado" loading="lazy" decoding="async">
+            <h1>Cableado</h1>
+        </div>
+        <div class="TarjetaTecnologia">
+            <img class="ImágenTecnologias" src="IMAGENES/Imagenes Routers.webp" alt="Imagenes de Routers" loading="lazy" decoding="async">
+            <h1>Routers</h1>
+        </div>
+        <div class="TarjetaTecnologia">
+            <img class="ImágenTecnologias" src="IMAGENES/Racks Imágen.webp" alt="Imagenes de Racks" loading="lazy" decoding="async">
+            <h1>Racks</h1>
+        </div>
+    </div>
+</div>
+
+<!-- GRUPO 4: VIRTUALIZACIÓN Y HARDWARE -->
+<div class="GrupoTecnologias">
+    <h2 class="TituloGrupo"> Virtualización y Hardware</h2>
+    <div class="GridTecnologias">
+        <div class="TarjetaTecnologia">
+            <img class="ImágenTecnologias" src="IMAGENES/Vmware Logo.webp" alt="Logo de Vmware" loading="lazy" decoding="async">
+            <h1>VMware</h1>
+        </div>
+        <div class="TarjetaTecnologia">
+            <img class="ImágenTecnologias" src="IMAGENES/VirtualboxLogo.png" alt="Logo de VirtualBox" loading="lazy" decoding="async">
+            <h1>VirtualBox</h1>
+        </div>
+        <div class="TarjetaTecnologia">
+            <img class="ImágenTecnologias" src="IMAGENES/Raspberry-pi Logo.webp" alt="Logo de Raspberry" loading="lazy" decoding="async">
+            <h1>Raspberry</h1>
+        </div>
+        <div class="TarjetaTecnologia">
+            <img class="ImágenTecnologias" src="IMAGENES/Montaje Equipos.webp" alt="Logo de Montaje" loading="lazy" decoding="async">
+            <h1>Montaje</h1>
+        </div>
+        <div class="TarjetaTecnologia">
+            <img class="ImágenTecnologias" src="IMAGENES/Reparaciones.webp" alt="Imagen Reparacion Portatil" loading="lazy" decoding="async">
+            <h1>Reparaciones</h1>
+        </div>
+        <div class="TarjetaTecnologia">
+            <img class="ImágenTecnologias" src="IMAGENES/Logo Soldador.webp" alt="Logo de Soldador" loading="lazy" decoding="async">
+            <h1>Soldadura</h1>
+        </div>
+        <div class="TarjetaTecnologia">
+            <img class="ImágenTecnologias" src="IMAGENES/Multimetro.webp" alt="Imagen Multimetro" loading="lazy" decoding="async">
+            <h1>Diagnóstico Hardware</h1>
+        </div>
+    </div>
+</div>
+
+<!-- GRUPO 5: OFIMÁTICA Y HERRAMIENTAS -->
+<div class="GrupoTecnologias">
+    <h2 class="TituloGrupo">Ofimática y Herramientas</h2>
+    <div class="GridTecnologias">
+        <div class="TarjetaTecnologia">
+            <img class="ImágenTecnologias" src="IMAGENES/Logo Office.webp" alt="Logo de Office" loading="lazy" decoding="async">
+            <h1>Office</h1>
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+</html>
